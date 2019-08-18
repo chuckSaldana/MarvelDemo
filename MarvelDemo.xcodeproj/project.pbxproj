@@ -14,6 +14,7 @@
 		6E04D2272309A85800CD5210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E04D2262309A85800CD5210 /* Assets.xcassets */; };
 		6E04D22A2309A85800CD5210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E04D2282309A85800CD5210 /* LaunchScreen.storyboard */; };
 		6E04D2352309A85A00CD5210 /* MarvelDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D2342309A85A00CD5210 /* MarvelDemoTests.swift */; };
+		6E04D2402309B91E00CD5210 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D23F2309B91E00CD5210 /* HeroCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		6E04D2302309A85A00CD5210 /* MarvelDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E04D2342309A85A00CD5210 /* MarvelDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDemoTests.swift; sourceTree = "<group>"; };
 		6E04D2362309A85A00CD5210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E04D23F2309B91E00CD5210 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				6E04D2282309A85800CD5210 /* LaunchScreen.storyboard */,
 				6E04D22B2309A85900CD5210 /* Info.plist */,
 				6E04D2232309A83800CD5210 /* MarvelDemo.xcdatamodeld */,
+				6E04D23F2309B91E00CD5210 /* HeroCollectionViewCell.swift */,
 			);
 			path = MarvelDemo;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E04D2402309B91E00CD5210 /* HeroCollectionViewCell.swift in Sources */,
 				6E04D2252309A83800CD5210 /* MarvelDemo.xcdatamodeld in Sources */,
 				6E04D21F2309A83800CD5210 /* ViewController.swift in Sources */,
 				6E04D21D2309A83800CD5210 /* AppDelegate.swift in Sources */,
