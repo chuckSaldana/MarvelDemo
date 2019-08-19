@@ -70,20 +70,53 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bHB-EE-Q3c"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9T8-bM-zaO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EcH-fW-rBG">
+                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling more heroes ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPQ-JV-y6W">
+                                        <rect key="frame" x="84.5" y="360" width="206" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="kMO-PX-j0H"/>
+                                            <constraint firstAttribute="width" constant="206" id="u9O-iD-hbj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EcH-fW-rBG" firstAttribute="centerX" secondItem="9T8-bM-zaO" secondAttribute="centerX" id="3pK-hR-zVA"/>
+                                    <constraint firstItem="EcH-fW-rBG" firstAttribute="centerY" secondItem="9T8-bM-zaO" secondAttribute="centerY" id="BiL-03-ZjB"/>
+                                    <constraint firstItem="FPQ-JV-y6W" firstAttribute="centerX" secondItem="9T8-bM-zaO" secondAttribute="centerX" id="Fy6-r6-hst"/>
+                                    <constraint firstItem="FPQ-JV-y6W" firstAttribute="top" secondItem="EcH-fW-rBG" secondAttribute="bottom" constant="8" id="xfi-q0-BOo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9T8-bM-zaO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ko0-EW-n31"/>
+                            <constraint firstItem="9T8-bM-zaO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PNS-ym-Nsa"/>
                             <constraint firstItem="ZDx-la-UIZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YhT-7A-G9g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZDx-la-UIZ" secondAttribute="trailing" id="cJw-N2-Zk4"/>
                             <constraint firstItem="ZDx-la-UIZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cbq-Au-vsh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9T8-bM-zaO" secondAttribute="bottom" id="fjQ-7P-FtO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZDx-la-UIZ" secondAttribute="bottom" id="gjn-Oy-uq8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9T8-bM-zaO" secondAttribute="trailing" id="jmJ-6m-0rA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ZDx-la-UIZ" id="6CN-79-amr"/>
+                        <outlet property="loadingView" destination="9T8-bM-zaO" id="n6N-PE-gS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-410.39999999999998" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>
