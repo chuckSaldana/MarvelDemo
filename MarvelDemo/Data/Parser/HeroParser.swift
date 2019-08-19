@@ -10,17 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
-enum ParsingError: Error {
-    case contextNotFound
-    case managedTypeNotFound
-    case jsonObjectNotFound
-    case dateWrongFormat
-}
-
 typealias DictionaryLocator = (object: NSManagedObject, dictionary: [String: Any])
 typealias ArrayLocator = (object: NSManagedObject, array: [[String: Any]])
 
-struct HeroParser {
+struct HeroParser: Parser {
     // Find each object in the json and iterate throughout collections to pupulate the curriculum object
     @discardableResult
     func getHeroWith(dictionary: [String: Any]) throws -> Set<Hero> {
@@ -41,6 +34,7 @@ struct HeroParser {
             let newHero = NSManagedObject(entity: heroEntity, insertInto: context)
             newHero.setValue(result["name"], forKey: "name")
             newHero.setValue(result["description"], forKey: "hero_description")
+            newHero.setValue(result["id"], forKey: "hero_identifier")
             
             let thumbnailLocator: [String: Any] = try collecionInDictionaryWith(jsonName: "thumbnail",
                                                                                   enclosingDictionary: result)
@@ -56,29 +50,5 @@ struct HeroParser {
         }
         
         return heroes
-    }
-    
-    // Find the corresponding json object
-    func collecionInDictionaryWith<T>(jsonName: String, enclosingDictionary: [String: Any]) throws -> T where T: Collection {
-        guard let collection = enclosingDictionary[jsonName] as? T else {
-            throw ParsingError.jsonObjectNotFound
-        }
-        return collection
-    }
-    
-    // Convert date
-    func dateWith(string: Any) throws -> Date? {
-        guard let dateStr = string as? String else {
-            return nil
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-dd-MM"
-        
-        guard let date = dateFormatter.date(from: dateStr) else {
-            throw ParsingError.dateWrongFormat
-        }
-        
-        return date
     }
 }

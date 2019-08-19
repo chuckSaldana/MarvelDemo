@@ -14,6 +14,8 @@ enum HeroEndpoint: String {
 }
 
 struct HeroFetcher: DataFetcher {
+    let publicKey = "b35ccd7245dde29dd7be85364e8a70e2"
+    let privateKey = "2c5d37bff0912ce6bf9f647e117908bda4751cf9"
     
     var md5: (String) -> String = { str in
         var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
@@ -24,11 +26,16 @@ struct HeroFetcher: DataFetcher {
     }
     
     func fetchHeroStream(endpoint: HeroEndpoint, offset: Int, completion: @escaping ([String: Any]) -> ()) {
-        let publicKey = "b35ccd7245dde29dd7be85364e8a70e2"
-        let privateKey = "2c5d37bff0912ce6bf9f647e117908bda4751cf9"
         let timestamp = String(Date().timeIntervalSinceReferenceDate)
         let hash = md5(timestamp + privateKey + publicKey)
         let endpointURL = endpoint.rawValue + "characters?apikey=\(publicKey)&hash=\(hash)&ts=\(timestamp)&offset=\(String(offset))"
+        fetchData(urlStr: endpointURL, completion: completion)
+    }
+    
+    func fetchHeroRecommndations(endpoint: HeroEndpoint, heroID: String, completion: @escaping ([String: Any]) -> ()) {
+        let timestamp = String(Date().timeIntervalSinceReferenceDate)
+        let hash = md5(timestamp + privateKey + publicKey)
+        let endpointURL = endpoint.rawValue + "comics?apikey=\(publicKey)&hash=\(hash)&ts=\(timestamp)&characters=\(heroID)"
         fetchData(urlStr: endpointURL, completion: completion)
     }
 }

@@ -64,18 +64,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "heroCellID"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HeroCollectionViewCell
-        let hero: Hero = heroes[indexPath.row]
-        cell.itemLabel.text = hero.name
-        cell.itemImage.image = UIImage(named: "TestImage")
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? HeroCollectionViewCell {
+            let hero: Hero = heroes[indexPath.row]
+            cell.itemLabel.text = hero.name
+            cell.itemImage.showLoading()
+            if let imgURLStr = hero.photo_url {
+                loadImageAsync(urlStr: imgURLStr) { imgData in
+                    if let updateCell = collectionView.cellForItem(at: indexPath) as? HeroCollectionViewCell {
+                        updateCell.itemImage.removeLoading()
+                        updateCell.itemImage.viewWithTag(9999)?.removeFromSuperview()
+                        let img:UIImage! = UIImage(data: imgData)
+                        updateCell.itemImage.image = img
+                    }
+                }
+            }
+            return cell
+        }
         
-        return cell
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if viewModel.isLastCellVisible(heroes: heroes, collectionView: collectionView) {
             showLoading()
-            viewModel.requesMoreHeroes(heroes: heroes) { moreHeroes in
+            viewModel.requesMoreHeroes(heroes: heroes, controller: self) { moreHeroes in
                 self.heroes = moreHeroes
                 self.enableUI()
             }

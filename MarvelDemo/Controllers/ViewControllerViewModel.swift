@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct ViewControllerViewModel {
+struct ViewControllerViewModel: HeroViewModel {
     var traitCollection: UITraitCollection?
     weak var controller: ViewController?
     
@@ -52,18 +52,6 @@ struct ViewControllerViewModel {
         }
         
         collectionView.reloadData()
-    }
-    
-    func requesMoreHeroes(heroes: [Hero], completion: @escaping ([Hero]) -> ()) {
-        DataLauncher.shared.dataFetcher.fetchHeroStream(endpoint: .heroStream, offset: heroes.count) { heroDictionary in
-            do {
-                let heroesSet = try DataLauncher.shared.parser.getHeroWith(dictionary: heroDictionary)
-                completion(heroes + Array(heroesSet))
-            } catch {
-                print("error: \(error)")
-                self.controller?.displayErrorMessage("Heroes couldn't arrive.")
-            }
-        }
     }
     
     func isLastCellVisible(heroes: [Hero], collectionView: UICollectionView) -> Bool {

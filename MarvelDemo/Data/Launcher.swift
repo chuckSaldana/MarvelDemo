@@ -10,7 +10,7 @@ import Foundation
 
 protocol Launcher {
     var dataFetcher: HeroFetcher { get set }
-    var parser: HeroParser { get set }
+    var heroParser: HeroParser { get set }
     var coreDataHandler: CoreDataHandler? { get set }
     
     func launchAppData()

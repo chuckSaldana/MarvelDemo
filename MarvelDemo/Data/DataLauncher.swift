@@ -12,7 +12,7 @@ struct DataLauncher: Launcher {
     static let shared = DataLauncher()
     
     var dataFetcher: HeroFetcher = HeroFetcher()
-    var parser: HeroParser = HeroParser()
+    var heroParser: HeroParser = HeroParser()
     var coreDataHandler: CoreDataHandler?
     
     init() {
@@ -23,7 +23,7 @@ struct DataLauncher: Launcher {
         dataFetcher.fetchHeroStream(endpoint: .heroStream, offset: 0) { heroDictionary in
             DispatchQueue.main.async {
                 do {
-                    try self.parser.getHeroWith(dictionary: heroDictionary)
+                    try self.heroParser.getHeroWith(dictionary: heroDictionary)
                     try self.coreDataHandler?.saveData()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "HeroesArrived"), object: nil, userInfo: nil)
                 } catch let error {

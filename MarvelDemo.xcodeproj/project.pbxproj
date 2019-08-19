@@ -25,6 +25,14 @@
 		6E04D25B230AF8EC00CD5210 /* HeroDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E04D25A230AF8EC00CD5210 /* HeroDetail.storyboard */; };
 		6E04D25D230B00F300CD5210 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D25C230B00F300CD5210 /* HeroDetailViewController.swift */; };
 		6E04D260230B01AE00CD5210 /* ViewControllerAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D25F230B01AE00CD5210 /* ViewControllerAdditions.swift */; };
+		6E04D262230B073600CD5210 /* HeroRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D261230B073600CD5210 /* HeroRecommendationCell.swift */; };
+		6E04D264230B077900CD5210 /* HeroDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D263230B077900CD5210 /* HeroDetailHeaderView.swift */; };
+		6E04D266230B150D00CD5210 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D265230B150D00CD5210 /* HeroViewModel.swift */; };
+		6E04D268230B15D800CD5210 /* HeroDetailVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D267230B15D800CD5210 /* HeroDetailVCViewModel.swift */; };
+		6E04D26A230B364900CD5210 /* ComicParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D269230B364900CD5210 /* ComicParser.swift */; };
+		6E04D26C230B368C00CD5210 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D26B230B368C00CD5210 /* Parser.swift */; };
+		6E04D26E230B37E500CD5210 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D26D230B37E500CD5210 /* Comic.swift */; };
+		6E3185B1230B425D008C9AD4 /* UIImageView Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3185B0230B425D008C9AD4 /* UIImageView Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,14 @@
 		6E04D25A230AF8EC00CD5210 /* HeroDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HeroDetail.storyboard; sourceTree = "<group>"; };
 		6E04D25C230B00F300CD5210 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		6E04D25F230B01AE00CD5210 /* ViewControllerAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAdditions.swift; sourceTree = "<group>"; };
+		6E04D261230B073600CD5210 /* HeroRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroRecommendationCell.swift; sourceTree = "<group>"; };
+		6E04D263230B077900CD5210 /* HeroDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailHeaderView.swift; sourceTree = "<group>"; };
+		6E04D265230B150D00CD5210 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
+		6E04D267230B15D800CD5210 /* HeroDetailVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailVCViewModel.swift; sourceTree = "<group>"; };
+		6E04D269230B364900CD5210 /* ComicParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicParser.swift; sourceTree = "<group>"; };
+		6E04D26B230B368C00CD5210 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		6E04D26D230B37E500CD5210 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		6E3185B0230B425D008C9AD4 /* UIImageView Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +162,7 @@
 				6E04D249230A294300CD5210 /* Launcher.swift */,
 				6E04D24B230A294900CD5210 /* DataLauncher.swift */,
 				6E04D256230A2A3600CD5210 /* Parser */,
+				6E04D265230B150D00CD5210 /* HeroViewModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -154,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				6E04D247230A293C00CD5210 /* HeroParser.swift */,
+				6E04D269230B364900CD5210 /* ComicParser.swift */,
+				6E04D26B230B368C00CD5210 /* Parser.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -161,6 +180,7 @@
 		6E04D257230A2A5600CD5210 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E04D26D230B37E500CD5210 /* Comic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +191,7 @@
 				6E04D21E2309A83800CD5210 /* ViewController.swift */,
 				6E04D245230A209C00CD5210 /* ViewControllerViewModel.swift */,
 				6E04D25C230B00F300CD5210 /* HeroDetailViewController.swift */,
+				6E04D267230B15D800CD5210 /* HeroDetailVCViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +205,8 @@
 				6E04D2282309A85800CD5210 /* LaunchScreen.storyboard */,
 				6E04D2202309A83800CD5210 /* Main.storyboard */,
 				6E04D25A230AF8EC00CD5210 /* HeroDetail.storyboard */,
+				6E04D261230B073600CD5210 /* HeroRecommendationCell.swift */,
+				6E04D263230B077900CD5210 /* HeroDetailHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				6E04D25F230B01AE00CD5210 /* ViewControllerAdditions.swift */,
+				6E3185B0230B425D008C9AD4 /* UIImageView Additions.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -301,14 +325,22 @@
 				6E04D2402309B91E00CD5210 /* HeroCollectionViewCell.swift in Sources */,
 				6E04D252230A295E00CD5210 /* CoreDataHandler.swift in Sources */,
 				6E04D24C230A294900CD5210 /* DataLauncher.swift in Sources */,
+				6E3185B1230B425D008C9AD4 /* UIImageView Additions.swift in Sources */,
 				6E04D2252309A83800CD5210 /* MarvelDemo.xcdatamodeld in Sources */,
+				6E04D264230B077900CD5210 /* HeroDetailHeaderView.swift in Sources */,
 				6E04D21F2309A83800CD5210 /* ViewController.swift in Sources */,
 				6E04D24A230A294300CD5210 /* Launcher.swift in Sources */,
+				6E04D262230B073600CD5210 /* HeroRecommendationCell.swift in Sources */,
+				6E04D266230B150D00CD5210 /* HeroViewModel.swift in Sources */,
 				6E04D24E230A294F00CD5210 /* DataFetcher.swift in Sources */,
+				6E04D26A230B364900CD5210 /* ComicParser.swift in Sources */,
 				6E04D248230A293C00CD5210 /* HeroParser.swift in Sources */,
 				6E04D21D2309A83800CD5210 /* AppDelegate.swift in Sources */,
 				6E04D25D230B00F300CD5210 /* HeroDetailViewController.swift in Sources */,
 				6E04D250230A295400CD5210 /* HeroFetcher.swift in Sources */,
+				6E04D26C230B368C00CD5210 /* Parser.swift in Sources */,
+				6E04D268230B15D800CD5210 /* HeroDetailVCViewModel.swift in Sources */,
+				6E04D26E230B37E500CD5210 /* Comic.swift in Sources */,
 				6E04D246230A209C00CD5210 /* ViewControllerViewModel.swift in Sources */,
 				6E04D260230B01AE00CD5210 /* ViewControllerAdditions.swift in Sources */,
 			);

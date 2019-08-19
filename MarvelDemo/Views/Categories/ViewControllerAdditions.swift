@@ -17,4 +17,19 @@ extension UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    func loadImageAsync(urlStr: String, completion: @escaping (Data) -> ()) {
+        let session = URLSession.shared
+        var task = URLSessionDownloadTask()
+        let artworkUrl = urlStr
+        guard let url:URL = URL(string: artworkUrl) else { return }
+        task = session.downloadTask(with: url, completionHandler: { (location, response, error) -> Void in
+            if let data = try? Data(contentsOf: url){
+                DispatchQueue.main.async(execute: { () -> Void in
+                    completion(data)
+                })
+            }
+        })
+        task.resume()
+    }
 }
