@@ -17,6 +17,7 @@
 		6E04D2402309B91E00CD5210 /* HeroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D23F2309B91E00CD5210 /* HeroCollectionViewCell.swift */; };
 		6E04D2422309CF1B00CD5210 /* MainViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D2412309CF1B00CD5210 /* MainViewLayout.swift */; };
 		6E04D244230A1B1D00CD5210 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D243230A1B1D00CD5210 /* Hero.swift */; };
+		6E04D246230A209C00CD5210 /* ViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04D245230A209C00CD5210 /* ViewControllerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		6E04D23F2309B91E00CD5210 /* HeroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCollectionViewCell.swift; sourceTree = "<group>"; };
 		6E04D2412309CF1B00CD5210 /* MainViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewLayout.swift; sourceTree = "<group>"; };
 		6E04D243230A1B1D00CD5210 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		6E04D245230A209C00CD5210 /* ViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				6E04D21C2309A83800CD5210 /* AppDelegate.swift */,
 				6E04D21E2309A83800CD5210 /* ViewController.swift */,
+				6E04D245230A209C00CD5210 /* ViewControllerViewModel.swift */,
 				6E04D2202309A83800CD5210 /* Main.storyboard */,
 				6E04D2262309A85800CD5210 /* Assets.xcassets */,
 				6E04D2282309A85800CD5210 /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 				6E04D21F2309A83800CD5210 /* ViewController.swift in Sources */,
 				6E04D21D2309A83800CD5210 /* AppDelegate.swift in Sources */,
 				6E04D2422309CF1B00CD5210 /* MainViewLayout.swift in Sources */,
+				6E04D246230A209C00CD5210 /* ViewControllerViewModel.swift in Sources */,
 				6E04D244230A1B1D00CD5210 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
