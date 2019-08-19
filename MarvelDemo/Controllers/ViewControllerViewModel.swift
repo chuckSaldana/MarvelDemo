@@ -11,6 +11,7 @@ import UIKit
 
 struct ViewControllerViewModel {
     var traitCollection: UITraitCollection?
+    weak var controller: ViewController?
     
     func setupLayout(with containerSize: CGSize, collectionView: UICollectionView) {
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
@@ -51,5 +52,49 @@ struct ViewControllerViewModel {
         }
         
         collectionView.reloadData()
+    }
+    
+    func requesMoreHeroes(heroes: [Hero], completion: @escaping ([Hero]) -> ()) {
+        DataLauncher.shared.dataFetcher.fetchHeroStream(endpoint: .heroStream, offset: heroes.count) { heroDictionary in
+            do {
+                let heroesSet = try DataLauncher.shared.parser.getHeroWith(dictionary: heroDictionary)
+                completion(heroes + Array(heroesSet))
+            } catch {
+                print("error: \(error)")
+                self.controller?.displayErrorMessage("Heroes couldn't arrive.")
+            }
+        }
+    }
+    
+    func isLastCellVisible(heroes: [Hero], collectionView: UICollectionView) -> Bool {
+        
+        if heroes.isEmpty {
+            return true
+        }
+        
+        let lastIndexPath = NSIndexPath(item: heroes.count - 1, section: 0)
+        var cellFrame = collectionView.layoutAttributesForItem(at: lastIndexPath as IndexPath)!.frame
+        
+        cellFrame.size.height = cellFrame.size.height
+        
+        var cellRect = collectionView.convert(cellFrame, to: collectionView.superview)
+        
+        cellRect.origin.y = cellRect.origin.y - cellFrame.size.height - 100
+        // substract 100 to make the "visible" area of a cell bigger
+        
+        var visibleRect = CGRect(
+            x: collectionView.bounds.origin.x,
+            y: collectionView.bounds.origin.y,
+            width: collectionView.bounds.size.width,
+            height: collectionView.bounds.size.height - collectionView.contentInset.bottom
+        )
+        
+        visibleRect = collectionView.convert(visibleRect, to: collectionView.superview)
+        
+        if visibleRect.contains(cellRect) {
+            return true
+        }
+        
+        return false
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var loadingView: UIView!
     var heroes: [Hero] = []
@@ -22,16 +22,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         loadingView.isHidden = true
     }
     
-    func requesMoreHeroes(lastKnownIndex: Int) {
-        hideLoading()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.heroesArrived), name: NSNotification.Name(rawValue: "HeroesArrived"), object: nil)
+        
         viewModel.traitCollection = traitCollection
         showLoading()
-        requesMoreHeroes(lastKnownIndex: 0)
         viewModel.setupLayout(with: view.bounds.size, collectionView: collectionView)
+    }
+    
+    @objc private func heroesArrived() {
+        do {
+            self.heroes = try DataLauncher.shared.coreDataHandler?.getAllManagedObjects(entityName: "Hero") ?? []
+            self.enableUI()
+        } catch let error {
+            self.displayErrorMessage("An error occured \(error).")
+        }
+    }
+    
+    func enableUI() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+            self.viewModel.setupLayout(with: self.view.bounds.size, collectionView: self.collectionView)
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -43,24 +57,36 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.traitCollectionDidChange(previousTraitCollection)
         viewModel.setupLayout(with: view.bounds.size, collectionView: collectionView)
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return heroes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "heroCellID"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HeroCollectionViewCell
-        cell.itemLabel.text = "Test Name"
+        let hero: Hero = heroes[indexPath.row]
+        cell.itemLabel.text = hero.name
         cell.itemImage.image = UIImage(named: "TestImage")
         
         return cell
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == heroes.count {
+        if viewModel.isLastCellVisible(heroes: heroes, collectionView: collectionView) {
             showLoading()
-            requesMoreHeroes(lastKnownIndex: indexPath.row)
+            viewModel.requesMoreHeroes(heroes: heroes) { moreHeroes in
+                self.heroes = moreHeroes
+                self.enableUI()
+            }
+        }
+    }
+    
+    func displayErrorMessage(_ message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "New alert!", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }
