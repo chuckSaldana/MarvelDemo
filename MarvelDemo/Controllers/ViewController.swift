@@ -82,12 +82,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    func displayErrorMessage(_ message: String) {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "New alert!", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "HeroDetail", bundle: nil)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "HeroDetailViewController") as? HeroDetailViewController else {
+            return
         }
+        detailVC.hero = heroes[indexPath.row]
+        self.navigationController?.show(detailVC, sender: nil)
     }
 }
 
