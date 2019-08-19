@@ -45,9 +45,9 @@ struct ViewControllerViewModel {
                 let minItemWidth: CGFloat = 300
                 let numberOfCell = containerSize.width / minItemWidth
                 let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
-                flowLayout.itemSize = CGSize(width: width, height: 91)
+                flowLayout.itemSize = CGSize(width: width, height: 400)
             } else {
-                flowLayout.itemSize = CGSize(width: containerSize.width, height: 91)
+                flowLayout.itemSize = CGSize(width: containerSize.width, height: 400)
             }
         }
         
