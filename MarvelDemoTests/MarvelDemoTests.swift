@@ -22,6 +22,8 @@ class MarvelDemoTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let heroController = ViewController(nibName: "Main", bundle: nil)
+        XCTAssertNotNil(heroController.view)
     }
 
     func testPerformanceExample() {
